@@ -21,4 +21,18 @@ after_success:
   - docker push enricjorda/multi-server
   - docker push enricjorda/multi-worker
 
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-3
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-eu-west-3-521068133029
+  bucket_path: docker-multi
+    on:
+      branch: master
+    access_key_id:
+      secure: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: $AWS_SECRET_KEY
+    
 
