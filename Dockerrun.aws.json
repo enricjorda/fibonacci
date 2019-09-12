@@ -8,18 +8,6 @@
             "essential": false
         },
         {
-            "name": "nginx",
-            "image": "enricjorda/multi-nginx",
-            "essential": true,
-            "portMappings": [
-                {
-                    "hostPort": 80,
-                    "containerPort": 80
-                }
-            ],
-            "links": ["client", "server"]
-        },
-        {
             "name": "server",
             "image": "enricjorda/multi-server",
             "hostname": "api",
@@ -30,6 +18,18 @@
             "image": "enricjorda/multi-worker",
             "hostname": "worker",
             "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "enricjorda/multi-nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
         }
     ]
 }
